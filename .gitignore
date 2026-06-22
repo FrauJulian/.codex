@@ -1,0 +1,49 @@
+# Ignore everything by default. This repo is for portable Codex config only.
+/*
+
+# Share these files.
+!/.gitignore
+!/README.md
+!/AGENTS.md
+!/config.toml
+
+# Share custom agents and custom skills.
+!/agents/
+!/agents/**
+!/skills/
+!/skills/**
+
+# Do not share generated/system/runtime data.
+# Plugin and marketplace selections are shared through config.toml.
+# Downloaded plugin bodies and staging folders stay local.
+/skills/.system/
+/.sandbox/
+/.sandbox-bin/
+/.sandbox-secrets/
+/.tmp/
+/tmp/
+/cache/
+/packages/
+/plugins/
+/sessions/
+
+# Credentials, identity, local history, logs, state, and caches.
+/auth.json
+/cap_sid
+/installation_id
+/history.jsonl
+/models_cache.json
+/version.json
+/*.sqlite
+/*.sqlite-shm
+/*.sqlite-wal
+/*.log
+/sandbox.*.log
+/.personality_migration
+
+# Local OS/editor noise.
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.tmp
