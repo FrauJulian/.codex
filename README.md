@@ -58,7 +58,17 @@ codex --strict-config doctor --summary
 
 The timestamped backup keeps the previous local credentials and runtime state available for manual recovery. `codex login` creates fresh authentication data; subsequent Codex starts recreate sessions, logs, caches, and plugin downloads. These files remain ignored by Git.
 
-## Updating
+## Updating from GitHub
+
+Pull the latest shared configuration on an existing installation:
+
+```powershell
+Set-Location "$env:USERPROFILE\.codex"
+git pull --ff-only
+codex --strict-config doctor --summary
+```
+
+## Publishing local changes
 
 Commit only intentional config changes:
 
