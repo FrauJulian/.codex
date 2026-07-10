@@ -1,7 +1,7 @@
 approvals_reviewer = "auto_review"
 model = "gpt-5.6-sol"
 model_reasoning_effort = "medium"
-service_tier = "fast"
+service_tier = "default"
 
 [agents]
 max_threads = 6

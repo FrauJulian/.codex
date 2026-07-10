@@ -6,6 +6,7 @@
 !/README.md
 !/AGENTS.md
 !/config.toml
+!/fast.config.toml
 !/scripts/
 !/scripts/**
 !/.github/

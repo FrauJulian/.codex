@@ -4,6 +4,8 @@ Portable Codex setup for my own machines.
 
 The default reasoning effort is `medium`: normal implementation, automatic review, debugging, and architecture work should favor reliable analysis over minimum latency. For a deliberately quick, low-risk task, override the reasoning effort for that invocation through the Codex UI or CLI supported by the installed version; no undocumented profile keys are stored here. Higher effort increases latency and token use, so reserve it for security reviews or unusually complex decisions.
 
+The base configuration uses the regular `default` service tier. Fast Mode is opt-in for simple or latency-sensitive work with `codex -p fast`; the CLI layers `fast.config.toml` over the base config. Reviews, security work, architecture, and complex refactoring should stay on the default tier. Use `codex -c service_tier='"fast"'` only for a one-off override.
+
 ## Supported environment
 
 This repository is tested with Codex CLI 0.144.1 or newer, Windows 11 build 26200, Git for Windows, and Windows PowerShell 5.1. PowerShell 7 is optional. On machines whose execution policy blocks `.ps1` files, use `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\validate.ps1` or an approved organization policy.
@@ -14,6 +16,7 @@ This is a public repository. Never commit credentials, sessions, machine identif
 
 - `AGENTS.md` - global behavior instructions
 - `config.toml` - model, agent limits, marketplace sources, plugin enablement
+- `fast.config.toml` - optional Fast Mode profile
 - `agents/` - custom subagent roles
 - `skills/` - custom user skills
 - marketplace and plugin selections via `config.toml`
