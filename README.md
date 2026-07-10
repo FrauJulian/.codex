@@ -40,14 +40,23 @@ Never commit:
 
 ## Setup on another PC
 
-Back up the existing Codex directory first, then clone or copy this repo into the Codex config directory:
+Install Git and Codex, then close all Codex clients. Run the following commands from PowerShell:
 
 ```powershell
-Rename-Item "$env:USERPROFILE\.codex" ".codex.backup" -ErrorAction SilentlyContinue
-git clone https://github.com/FrauJulian/.codex.git "$env:USERPROFILE\.codex"
+Set-Location $env:USERPROFILE
+
+if (Test-Path -LiteralPath ".codex") {
+    $backup = ".codex.backup-$(Get-Date -Format 'yyyyMMdd-HHmmss')"
+    Rename-Item -LiteralPath ".codex" -NewName $backup -ErrorAction Stop
+}
+
+git clone https://github.com/FrauJulian/.codex.git ".codex"
+Set-Location ".codex"
+codex login
+codex --strict-config doctor --summary
 ```
 
-After the first Codex start, local files such as `auth.json`, `sessions/`, logs, caches, and plugin downloads will be recreated locally and ignored by Git.
+The timestamped backup keeps the previous local credentials and runtime state available for manual recovery. `codex login` creates fresh authentication data; subsequent Codex starts recreate sessions, logs, caches, and plugin downloads. These files remain ignored by Git.
 
 ## Updating
 
