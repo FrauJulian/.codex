@@ -53,6 +53,8 @@ if (Test-Path -LiteralPath ".codex") {
 git clone https://github.com/FrauJulian/.codex.git ".codex"
 Set-Location ".codex"
 codex login
+codex plugin add ponytail@ponytail
+codex plugin list
 codex --strict-config doctor --summary
 ```
 
@@ -65,6 +67,8 @@ Pull the latest shared configuration on an existing installation:
 ```powershell
 Set-Location "$env:USERPROFILE\.codex"
 git pull --ff-only
+codex plugin add ponytail@ponytail
+codex plugin list
 codex --strict-config doctor --summary
 ```
 
