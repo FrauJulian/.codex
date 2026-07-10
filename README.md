@@ -17,6 +17,8 @@ Current synced marketplace/plugin config:
 - Marketplace `ponytail` from `https://github.com/DietrichGebert/ponytail.git`
 - Enabled plugin `ponytail@ponytail`
 
+`last_revision` records the marketplace revision seen by Codex. It is useful for review and rollback, but is not treated as an immutable plugin pin because the current CLI does not document commit-addressed installation for marketplace plugins.
+
 ## What is not shared
 
 This repository intentionally excludes credentials, local runtime state, caches, logs, sessions, sandbox data, generated plugin caches, SQLite databases, and machine identity files.
@@ -57,6 +59,15 @@ Apply a safe fast-forward update and run the shared validation:
 ```powershell
 & "$env:USERPROFILE\.codex\scripts\update.ps1"
 ```
+
+This command never updates plugins. Review and apply a plugin update separately:
+
+```powershell
+& "$env:USERPROFILE\.codex\scripts\update-plugin.ps1" -WhatIf
+& "$env:USERPROFILE\.codex\scripts\update-plugin.ps1"
+```
+
+The script displays the recorded and upstream revisions before Codex changes anything. Inspect the upstream diff between those commits, especially hooks, MCP configuration, scripts, and dependencies. Commit the resulting `config.toml` revision only after review. If upstream is unavailable or suspicious, keep the installed revision and do not run the update. To roll back, restore the prior configuration commit and reinstall only after verifying that the marketplace still serves the reviewed revision; if it cannot, keep the cached plugin offline or disable it.
 
 ## Publishing local changes
 
