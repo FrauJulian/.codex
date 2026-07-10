@@ -14,6 +14,9 @@
 !/.github/workflows/**
 !/docs/
 !/docs/**
+!/tests/
+!/tests/**
+!/semgrep.yml
 
 # Share custom agents and custom skills.
 !/agents/

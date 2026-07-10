@@ -1,0 +1,22 @@
+rules:
+  - id: typescript-sql-template-interpolation
+    message: Do not build SQL with template interpolation; use parameters.
+    severity: ERROR
+    languages: [typescript]
+    pattern: $DB.query(`...${$VALUE}...`)
+
+  - id: csharp-binaryformatter-deserialize
+    message: BinaryFormatter deserialization is unsafe; use a constrained serializer.
+    severity: ERROR
+    languages: [csharp]
+    pattern: new BinaryFormatter().Deserialize(...)
+
+  - id: typescript-sensitive-console-log
+    message: Do not write likely credentials or tokens to the console.
+    severity: ERROR
+    languages: [typescript]
+    patterns:
+      - pattern: console.$METHOD($VALUE)
+      - metavariable-regex:
+          metavariable: $VALUE
+          regex: (?i).*(password|token|secret|apiKey).*
