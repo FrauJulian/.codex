@@ -1,0 +1,4 @@
+interface:
+  display_name: "Repository Research"
+  short_description: "Find relevant repository code with bounded searches"
+  default_prompt: "Find the smallest relevant set of files and symbols before reading broadly."

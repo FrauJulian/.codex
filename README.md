@@ -12,6 +12,8 @@ This repository is tested with Codex CLI 0.144.1 or newer, Windows 11 build 2620
 
 This is a public repository. Never commit credentials, sessions, machine identifiers, local trust state, private paths, or generated runtime data.
 
+For bounded repository search on Windows, install [ripgrep](https://github.com/BurntSushi/ripgrep) and [fd](https://github.com/sharkdp/fd) with `winget install BurntSushi.ripgrep.MSVC` and `winget install sharkdp.fd`, then verify `rg --version` and `fd --version`. Codex should use `rg --files`/`fd` before reading directories and limit content searches with paths, globs, and `--max-count`. If either tool is unavailable, use `Get-ChildItem -Recurse -File` and `Select-String` with the same path and extension limits. The `repository-research` skill applies this workflow to C# and TypeScript repositories.
+
 ## What is shared
 
 - `AGENTS.md` - global behavior instructions
