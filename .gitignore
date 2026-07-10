@@ -6,6 +6,8 @@
 !/README.md
 !/AGENTS.md
 !/config.toml
+!/scripts/
+!/scripts/**
 
 # Share custom agents and custom skills.
 !/agents/

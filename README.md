@@ -40,36 +40,22 @@ Never commit:
 
 ## Setup on another PC
 
-Install Git and Codex, then close all Codex clients. Run the following commands from PowerShell:
+Install Git and Codex, then close all Codex clients. Run from PowerShell:
 
 ```powershell
-Set-Location $env:USERPROFILE
-
-if (Test-Path -LiteralPath ".codex") {
-    $backup = ".codex.backup-$(Get-Date -Format 'yyyyMMdd-HHmmss')"
-    Rename-Item -LiteralPath ".codex" -NewName $backup -ErrorAction Stop
-}
-
-git clone https://github.com/FrauJulian/.codex.git ".codex"
-Set-Location ".codex"
+git clone https://github.com/FrauJulian/.codex.git "$env:TEMP\codex-config"
+& "$env:TEMP\codex-config\scripts\install.ps1"
 codex login
-codex plugin add ponytail@ponytail
-codex plugin list
-codex --strict-config doctor --summary
 ```
 
 The timestamped backup keeps the previous local credentials and runtime state available for manual recovery. `codex login` creates fresh authentication data; subsequent Codex starts recreate sessions, logs, caches, and plugin downloads. These files remain ignored by Git.
 
 ## Updating from GitHub
 
-Pull the latest shared configuration on an existing installation:
+Apply a safe fast-forward update and run the shared validation:
 
 ```powershell
-Set-Location "$env:USERPROFILE\.codex"
-git pull --ff-only
-codex plugin add ponytail@ponytail
-codex plugin list
-codex --strict-config doctor --summary
+& "$env:USERPROFILE\.codex\scripts\update.ps1"
 ```
 
 ## Publishing local changes
@@ -83,9 +69,8 @@ git commit -m "Update Codex config"
 git push
 ```
 
-Before pushing, check that no secrets are staged:
+Before pushing, validate the repository:
 
 ```powershell
-git diff --cached --name-only
-Select-String -Path config.toml -Pattern '\[projects\.|trust_level|[A-Za-z]:\\'
+& .\scripts\validate.ps1
 ```
