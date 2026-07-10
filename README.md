@@ -2,6 +2,8 @@
 
 Portable Codex setup for my own machines.
 
+The default reasoning effort is `medium`: normal implementation, automatic review, debugging, and architecture work should favor reliable analysis over minimum latency. For a deliberately quick, low-risk task, override the reasoning effort for that invocation through the Codex UI or CLI supported by the installed version; no undocumented profile keys are stored here. Higher effort increases latency and token use, so reserve it for security reviews or unusually complex decisions.
+
 ## What is shared
 
 - `AGENTS.md` - global behavior instructions
