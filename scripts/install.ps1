@@ -7,7 +7,7 @@ param(
 $ErrorActionPreference = 'Stop'
 
 if (Test-Path -LiteralPath (Join-Path $Target '.git')) {
-    throw "Eine Installation existiert bereits in '$Target'. Verwende update.ps1."
+    throw "An installation already exists at '$Target'. Run update.ps1 instead."
 }
 
 if (Test-Path -LiteralPath $Target) {
@@ -18,4 +18,4 @@ if (Test-Path -LiteralPath $Target) {
 
 git clone -- $Repository $Target
 & (Join-Path $Target 'scripts\validate.ps1')
-Write-Host 'Installation geprüft. Führe anschließend codex login aus.'
+Write-Host 'Installation validated. Run codex login next.'

@@ -1,45 +1,45 @@
 ---
 name: clean-text-writer
-description: Verwende diesen Skill, wenn Texte auf Deutsch oder Englisch klar, menschlich, lesbar und ohne unnötige Worte ueberarbeitet werden sollen. Einsatz bei E-Mails, Berichten, Tickets, Dokumentation, Erklaerungen, UI-Texten, Zusammenfassungen oder jeder Stelle, an der Verstaendlichkeit und Genauigkeit wichtiger sind als Stilbrille.
+description: Rewrite German or English text so it is clear, natural, concise, and easy to read. Use for emails, reports, tickets, documentation, explanations, UI copy, and summaries where clarity and accuracy matter more than stylistic flourish.
 ---
 
 # Clean Text Writer
 
-## Leitprinzip
+## Principles
 
-- Klarheit vor Eleganz.
-- Kuerzen wo moeglich, aber keine inhaltlichen Aequivalenzverluste.
-- Menschlich schreiben: konkret, freundlich, direkt.
-- Fakten, Zweck und Fachtermini der Anfrage strikt erhalten.
+- Prefer clarity over elegance.
+- Remove unnecessary words without changing meaning.
+- Write in a direct, friendly, human voice.
+- Preserve facts, intent, and technical terminology.
 
-## Arbeitsablauf
+## Workflow
 
-1. Intention, Zielgruppe und Handlungsaufforderung erkennen.
-2. Kernaussage in einen starken Einstieg bringen.
-3. Füllwoerter und redundante Phrasen entfernen.
-4. Lange Sätze zerlegen; ein Satz = ein Gedanke.
-5. Aktiv schreiben und starke Verben bevorzugen.
-6. Struktur verbessern: kurze Abschnitte, klare Ueberschriften, Listen bei Aufzaehlungen.
-7. Abschluss mit eindeutiger NAEchste-Aktion, wenn gefordert.
+1. Identify the intent, audience, and requested action.
+2. Put the main point first.
+3. Remove filler and repetition.
+4. Split long sentences so each sentence carries one idea.
+5. Prefer active voice and strong verbs.
+6. Use short sections, descriptive headings, and lists where helpful.
+7. End with a clear next action when one is required.
 
-## Stilregeln
+## Style
 
-- Keine Marketing- oder Werbesprache, ausser explizit gewuenscht.
-- Keine unnötigen Modalitaeten oder Entschuldigungsvokabular.
-- Konsistente Terminologie durchgehend verwenden.
-- Kein Nominalstil, wenn ein Verb klarer ist.
-- Bei Mehrdeutigkeit Rueckfrage statt Vermutung.
+- Avoid marketing language unless explicitly requested.
+- Avoid unnecessary qualifiers and apology language.
+- Use consistent terminology.
+- Prefer verbs over noun-heavy phrasing.
+- Ask when ambiguity would materially change the result.
 
-## Ausgabeformat
+## Output
 
-- Bei "umbau/ueberarbeite": zuerst nur der verbesserte Text.
-- Bei "schlage vor": 2-3 Varianten liefern.
-- Bei "feedback": nur die stärksten 3-5 Punkte.
-- Bei "kurz/fertig": Fokus auf Lesbarkeit, Scannbarkeit, Verständlichkeit.
+- For a rewrite request, return the improved text first.
+- For suggestions, provide two or three variants.
+- For feedback, report only the strongest three to five points.
+- For a concise final version, optimize for readability and scanning.
 
-## Schnell-Check
+## Check
 
-- Ist die Hauptaussage am Anfang?
-- Lässt sich mindestens ein Wort streichen?
-- Ist der Satzbau fuer schnellen Lesefluss geeignet?
-- Bleiben Ton und Informationsgehalt korrekt?
+- Is the main point first?
+- Can any word be removed?
+- Is each sentence easy to parse once?
+- Are tone and meaning preserved?

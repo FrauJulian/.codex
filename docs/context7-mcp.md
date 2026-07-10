@@ -12,7 +12,7 @@ Use Context7 only for version-dependent APIs, framework migrations, changed conf
 For a bounded TypeScript check:
 
 1. Read the installed `typescript` version from the lockfile or compiler.
-2. Call `resolve-library-id` with library `TypeScript` and the exact question, such as “Does TypeScript 5.8 support `--erasableSyntaxOnly`, and what is its scope?”
+2. Call `resolve-library-id` with library `TypeScript` and the exact question, such as "Does TypeScript 5.8 support `--erasableSyntaxOnly`, and what is its scope?"
 3. Call `query-docs` once with the selected library ID, version `5.8`, and only that compiler-option topic.
 4. Record `Context7 library ID`, requested version, source URL/title, and retrieval date in the answer or work log. Verify the result against the compiler before changing code.
 

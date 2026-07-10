@@ -16,7 +16,7 @@ if ($Staged) {
     $blockedNames = '(^|/)(auth\.json|cap_sid|installation_id|history\.jsonl|.*\.sqlite(?:-(?:shm|wal))?|.*\.pem)$'
     $names = git diff --cached --name-only --diff-filter=ACMR
     if ($names | Where-Object { $_ -match $blockedNames }) {
-        Write-Error 'Gestagte Runtime-, Credential- oder Schlüsseldatei erkannt.'
+        Write-Error 'A staged runtime, credential, or key file was detected.'
         exit 1
     }
 
@@ -33,29 +33,29 @@ if ($Staged) {
     )
     foreach ($pattern in $secretPatterns) {
         if ($added -match $pattern) {
-            Write-Error "Gestagter Inhalt verletzt die Secret-/Portabilitätsrichtlinie: $pattern"
+            Write-Error "Staged content violates the secret or portability policy: $pattern"
             exit 1
         }
     }
 }
 
 if (-not (Test-Path -LiteralPath $config)) {
-    throw 'config.toml fehlt.'
+    throw 'config.toml is missing.'
 }
 
 python -c "import pathlib,tomllib; tomllib.loads(pathlib.Path(r'$config').read_text(encoding='utf-8'))"
-if ($LASTEXITCODE) { throw 'config.toml ist ungültig.' }
+if ($LASTEXITCODE) { throw 'config.toml is invalid.' }
 
 $trackedRuntime = git ls-files | Where-Object { $_ -match '(^|/)(auth\.json|cap_sid|installation_id|history\.jsonl|sessions/|cache/|plugins/|.*\.sqlite(?:-(?:shm|wal))?)' }
 if ($trackedRuntime) {
-    Write-Error "Getrackte Runtime-Dateien: $($trackedRuntime -join ', ')"
+    Write-Error "Tracked runtime files: $($trackedRuntime -join ', ')"
     exit 1
 }
 
 $configContent = if ($Staged) { git show :config.toml } else { Get-Content -LiteralPath $config }
 $forbidden = $configContent | Where-Object { $_ -match '\[projects\.|^trust_level\s*=|^[A-Za-z]:\\|\[hooks\.state\]' }
 if ($forbidden) {
-    $forbidden | ForEach-Object { Write-Error "Nicht portable Konfiguration: $($_.Trim())" }
+    $forbidden | ForEach-Object { Write-Error "Non-portable configuration: $($_.Trim())" }
     exit 1
 }
 
@@ -64,12 +64,12 @@ Get-ChildItem -LiteralPath (Join-Path $RepositoryRoot 'skills') -Directory |
     ForEach-Object {
         $skillFile = Join-Path $_.FullName 'SKILL.md'
         if (-not (Test-Path -LiteralPath $skillFile)) {
-            throw "SKILL.md fehlt in '$($_.FullName)'."
+            throw "SKILL.md is missing from '$($_.FullName)'."
         }
         $skill = Get-Content -Raw -LiteralPath $skillFile
         if ($skill -notmatch '(?ms)^---\r?\n.*?^name:\s*\S+.*?^description:\s*.+?^---\r?\n') {
-            throw "Ungültiges Skill-Frontmatter in '$skillFile'."
+            throw "Invalid skill frontmatter in '$skillFile'."
         }
     }
 
-Write-Host 'Validierung erfolgreich.'
+Write-Host 'Validation succeeded.'

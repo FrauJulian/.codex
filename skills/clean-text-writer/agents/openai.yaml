@@ -1,4 +1,4 @@
 interface:
   display_name: "Clean Text Writer"
-  short_description: "Knapp, menschlich und klar schreiben"
+  short_description: "Write concise, natural, and clear text"
   default_prompt: "Use $clean-text-writer to rewrite this text so it is clear, human, concise, and easy to scan."

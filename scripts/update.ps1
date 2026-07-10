@@ -5,7 +5,7 @@ $ErrorActionPreference = 'Stop'
 Set-Location -LiteralPath $RepositoryRoot
 
 if (git status --porcelain) {
-    throw 'Der Arbeitsbaum ist nicht sauber. Änderungen zuerst committen oder sichern.'
+    throw 'The working tree is not clean. Commit or stash your changes first.'
 }
 
 git pull --ff-only

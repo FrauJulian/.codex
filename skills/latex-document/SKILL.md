@@ -1,65 +1,56 @@
 ---
 name: latex-document
-description: Verwende diesen Skill fuer LaTeX-Dokumente mit professioneller Struktur und lesbarem Layout. Nutze ihn fuer neue .tex-Dateien, Ueberarbeitung bestehender Dokumente, Tabellen, Abbildungen, Gleichungen, Literaturverwaltung und LaTeX-Fehlerbehebung.
+description: Create and revise professional LaTeX documents with clear structure and readable layout. Use for .tex files, tables, figures, equations, bibliographies, and LaTeX troubleshooting.
 ---
 
 # LaTeX Document
 
-## Leitprinzip
+## Principles
 
-- Inhalt vor Ornamentik.
-- Struktur vor Sichtbarkeit.
-- Nur genutzte Pakete im Vorspann.
-- Keine unnötige Komplexitaet.
+- Prefer content over decoration.
+- Establish structure before styling.
+- Load only packages that are used.
+- Avoid unnecessary complexity.
 
-## Vorgehen
+## Workflow
 
-1. Dokumenttyp bestimmen (Article, Report, Thesis, Letter, Vortrag).
-2. Bestehende Projektstandards uebernehmen (Klasse, Preamble, Konventionen).
-3. Klare Hierarchie aufbauen:
-   - `\title`, `\author`, `\date`
-   - `\section`, `\subsection`, `\label`, `\ref`
-   - konsistente Referenzpraefixe (`sec:`, `fig:`, `tab:`, `eq:`).
-4. Text in kurze, nachvollziehbare Blöcke gliedern.
-5. Tabellen/Abbildungen mit Beschriftung und Verweisen platzieren.
-6. Mathematische Ausdruecke konsistent einsetzen.
-7. Bei Fehlern die kleinste stabile Korrektur liefern.
+1. Identify the document type: article, report, thesis, letter, or presentation.
+2. Preserve the project's class, preamble, language, and conventions.
+3. Build a clear hierarchy with `\title`, `\author`, `\date`, sections, labels, and references.
+4. Use consistent reference prefixes such as `sec:`, `fig:`, `tab:`, and `eq:`.
+5. Split prose into short, coherent paragraphs.
+6. Give every table and figure a caption and a reference in the text.
+7. Use mathematical notation consistently.
+8. Fix errors with the smallest stable change.
 
-## Kompakte Basispraeambel
+## Minimal preamble
 
 ```latex
 \documentclass[11pt,a4paper]{article}
 \usepackage[T1]{fontenc}
-\usepackage[ngerman]{babel}
+\usepackage[english]{babel}
 \usepackage{microtype}
 \usepackage{amsmath,amssymb}
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage[hidelinks]{hyperref}
-\title{Titel}
-\author{Autor}
+\title{Title}
+\author{Author}
 \date{\today}
 ```
 
-LaTeX verarbeitet UTF-8 seit 2018 standardmaessig. Bei LuaLaTeX oder XeLaTeX `fontspec` benutzen und `fontenc` weglassen.
+LaTeX has processed UTF-8 by default since 2018. With LuaLaTeX or XeLaTeX, use `fontspec` and omit `fontenc`. Preserve a repository's existing document language instead of forcing English.
 
-## Typografische Regeln
+## Typography
 
-- `booktabs` fuer saubere Tabellen; keine vertikalen Linien.
-- Keine `\\` als Abschnittstrenner.
-- Klare Überschriften, keine leeren Etiketten ("Details", "Weitere Infos").
-- `\emph{}` fuer Hervorhebung statt ueberschaubarer Sonderformatierungen.
-- Jede Grafik und jede Tabelle sofort im Text einordnen.
+- Use `booktabs` for tables and avoid vertical rules.
+- Do not use `\\` as a paragraph separator.
+- Use descriptive headings.
+- Use `\emph{}` for emphasis instead of custom formatting.
+- Introduce every figure and table in the surrounding text.
 
-## Dokumentaufbau
+## Output
 
-- Einleitung: Ziel und Problem.
-- Hauptteil: Vorgehen, Befund, Herleitung.
-- Schluss: Kernaussagen und Grenzen.
-- Literatur: konsistent und nach Projektstandard.
-
-## Ausgabe-Verhalten
-
-- Neuanlage: vollständige minimal funktionsfähige `.tex`-Datei.
-- Bestehende Datei: gezielten Patch oder ersetztes Teilmodul liefern.
-- Fehlersuche: Ursache + kleinster kompiliersicherer Fix.
+- New document: provide a complete, minimal, compilable `.tex` file.
+- Existing document: provide a focused patch or replacement section.
+- Troubleshooting: state the cause and provide the smallest compiling fix.

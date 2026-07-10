@@ -1,4 +1,4 @@
 interface:
   display_name: "LaTeX Document"
-  short_description: "Saubere LaTeX-Dokumente erstellen"
+  short_description: "Create clean, structured LaTeX documents"
   default_prompt: "Use $latex-document to create a clean, well-structured LaTeX document."
