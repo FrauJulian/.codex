@@ -118,4 +118,4 @@ The check rejects whitespace errors, credential and runtime filenames, private k
 
 The same validator runs on every push and pull request. CI also parses `config.toml`, rejects tracked runtime data, and checks every custom skill for `SKILL.md` frontmatter. `codex doctor` is intentionally not part of CI because the runner has no reproducible authenticated Codex installation.
 
-Tool guides: [ast-grep for structural search and refactoring](docs/ast-grep.md), [Semgrep security rules](docs/semgrep.md).
+Tool guides: [ast-grep for structural search and refactoring](docs/ast-grep.md), [Semgrep security rules](docs/semgrep.md), [project-local Playwright MCP](docs/playwright-mcp.md).

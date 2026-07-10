@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<title>Playwright MCP smoke test</title>
+<button id="continue">Continue</button>
+<p id="status" aria-live="polite">Ready</p>
+<script>
+  document.querySelector('#continue').addEventListener('click', () => {
+    document.querySelector('#status').textContent = 'Completed';
+  });
+</script>
+</html>

@@ -17,6 +17,8 @@
 !/tests/
 !/tests/**
 !/semgrep.yml
+!/examples/
+!/examples/**
 
 # Share custom agents and custom skills.
 !/agents/
