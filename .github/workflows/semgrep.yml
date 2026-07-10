@@ -19,6 +19,7 @@ jobs:
       - run: semgrep scan --validate --config semgrep.yml
       - name: Verify rule fixtures
         run: |
-          semgrep scan --no-git-ignore --config semgrep.yml --json tests/semgrep > findings.json
+          cp -R tests/semgrep /tmp/semgrep-fixtures
+          semgrep scan --config semgrep.yml --json /tmp/semgrep-fixtures > findings.json
           python -c "import json; expected={'typescript-sql-template-interpolation','csharp-binaryformatter-deserialize','typescript-sensitive-console-log'}; actual={r['check_id'] for r in json.load(open('findings.json'))['results']}; assert expected == actual, (expected, actual)"
       - run: semgrep scan --no-git-ignore --config semgrep.yml --severity ERROR --error --max-lines-per-finding 20 --exclude tests/semgrep .
