@@ -12,6 +12,8 @@
 !/.github/
 !/.github/workflows/
 !/.github/workflows/**
+!/docs/
+!/docs/**
 
 # Share custom agents and custom skills.
 !/agents/

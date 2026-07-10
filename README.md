@@ -117,3 +117,5 @@ git diff --cached
 The check rejects whitespace errors, credential and runtime filenames, private keys, common token formats, absolute user paths, trusted-project entries, and hook trust state. Keep test values obviously fake and add `allow-secret-scan` only to the exact fixture line that intentionally exercises a detector.
 
 The same validator runs on every push and pull request. CI also parses `config.toml`, rejects tracked runtime data, and checks every custom skill for `SKILL.md` frontmatter. `codex doctor` is intentionally not part of CI because the runner has no reproducible authenticated Codex installation.
+
+Tool guides: [ast-grep for structural search and refactoring](docs/ast-grep.md).
