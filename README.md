@@ -69,8 +69,11 @@ git commit -m "Update Codex config"
 git push
 ```
 
-Before pushing, validate the repository:
+Before committing, inspect the complete staged diff and run the shared secret and policy checks:
 
 ```powershell
-& .\scripts\validate.ps1
+git diff --cached
+& .\scripts\validate.ps1 -Staged
 ```
+
+The check rejects whitespace errors, credential and runtime filenames, private keys, common token formats, absolute user paths, trusted-project entries, and hook trust state. Keep test values obviously fake and add `allow-secret-scan` only to the exact fixture line that intentionally exercises a detector.
