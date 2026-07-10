@@ -6,6 +6,7 @@
 - Write maintainable, easy-to-read code.
 - Find relevant files with `rg --files` or `fd` before broad reads; use bounded `rg` searches with paths, globs, and `--max-count`. Fall back to PowerShell search tools when unavailable.
 - Use ast-grep for syntax-dependent searches and deterministic refactors; inspect matches or an interactive diff before applying rewrites, then run compiler, analyzers, and relevant tests.
+- Use Context7 only when local code, compiler output, lockfiles, and bundled documentation cannot answer a version-dependent library API, migration, changed option, or contradictory usage question. Request one library version and one relevant topic, then record the library ID and source.
 - Run the narrowest relevant tests; use broader suites only when the change risk justifies them.
 - Prefer existing dependencies and platform features. Add production dependencies only with explicit approval; add development-only dependencies only when justified and no reasonable built-in alternative exists.
 - Use subagents only when they add clear value and stay within the configured agent depth.
