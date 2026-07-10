@@ -15,10 +15,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
-      - run: pip install semgrep
+      - run: pip install semgrep==1.168.0
       - run: semgrep scan --validate --config semgrep.yml
       - name: Verify rule fixtures
         run: |
-          semgrep scan --config semgrep.yml --json tests/semgrep > findings.json
+          semgrep scan --no-git-ignore --config semgrep.yml --json tests/semgrep > findings.json
           python -c "import json; expected={'typescript-sql-template-interpolation','csharp-binaryformatter-deserialize','typescript-sensitive-console-log'}; actual={r['check_id'] for r in json.load(open('findings.json'))['results']}; assert expected == actual, (expected, actual)"
-      - run: semgrep scan --config semgrep.yml --severity ERROR --error --max-lines-per-finding 20 --exclude tests/semgrep .
+      - run: semgrep scan --no-git-ignore --config semgrep.yml --severity ERROR --error --max-lines-per-finding 20 --exclude tests/semgrep .
