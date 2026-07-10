@@ -8,6 +8,9 @@
 !/config.toml
 !/scripts/
 !/scripts/**
+!/.github/
+!/.github/workflows/
+!/.github/workflows/**
 
 # Share custom agents and custom skills.
 !/agents/
