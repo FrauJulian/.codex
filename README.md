@@ -4,6 +4,12 @@ Portable Codex setup for my own machines.
 
 The default reasoning effort is `medium`: normal implementation, automatic review, debugging, and architecture work should favor reliable analysis over minimum latency. For a deliberately quick, low-risk task, override the reasoning effort for that invocation through the Codex UI or CLI supported by the installed version; no undocumented profile keys are stored here. Higher effort increases latency and token use, so reserve it for security reviews or unusually complex decisions.
 
+## Supported environment
+
+This repository is tested with Codex CLI 0.144.1 or newer, Windows 11 build 26200, Git for Windows, and Windows PowerShell 5.1. PowerShell 7 is optional. On machines whose execution policy blocks `.ps1` files, use `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\validate.ps1` or an approved organization policy.
+
+This is a public repository. Never commit credentials, sessions, machine identifiers, local trust state, private paths, or generated runtime data.
+
 ## What is shared
 
 - `AGENTS.md` - global behavior instructions
@@ -70,6 +76,20 @@ This command never updates plugins. Review and apply a plugin update separately:
 ```
 
 The script displays the recorded and upstream revisions before Codex changes anything. Inspect the upstream diff between those commits, especially hooks, MCP configuration, scripts, and dependencies. Commit the resulting `config.toml` revision only after review. If upstream is unavailable or suspicious, keep the installed revision and do not run the update. To roll back, restore the prior configuration commit and reinstall only after verifying that the marketplace still serves the reviewed revision; if it cannot, keep the cached plugin offline or disable it.
+
+## Rollback and recovery
+
+Before an update, note the current revision with `git rev-parse HEAD`. Roll back a bad shared update with `git log --oneline`, then `git switch --detach <known-good-commit>` to verify it; return to `master` and revert the bad commit rather than rewriting published history. If Codex cannot parse `config.toml`, validate it with `python -c "import pathlib,tomllib; tomllib.loads(pathlib.Path('config.toml').read_text())"`, compare it with `git diff`, and restore only intentional shared keys from a known-good commit.
+
+Setup backups may contain `auth.json`, sessions, and other credentials. After recovery, delete an obsolete backup from an elevated local shell with `Remove-Item -LiteralPath '<verified-backup-path>' -Recurse -Force`; verify the resolved path first, never use a wildcard, and remember that deletion does not revoke copied tokens. Revoke exposed credentials separately.
+
+## Troubleshooting and ownership
+
+- `git status --short` and `git diff` diagnose shared repository changes; Git owns only tracked portable files.
+- `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\validate.ps1` checks shared syntax and policy.
+- `codex.cmd --version`, `codex.cmd plugin list`, and `codex.cmd --strict-config doctor --summary` diagnose the installed runtime. If `codex.ps1` is blocked, use `codex.cmd`.
+- Authentication, sessions, caches, plugin downloads, trusted projects, and hook approvals are local runtime state. Recreate them with login/startup rather than restoring them to Git.
+- A rejected fast-forward means the local branch diverged; inspect it instead of forcing an update. An unavailable plugin upstream is not a reason to replace the reviewed cached version.
 
 ## Publishing local changes
 
