@@ -85,7 +85,7 @@ Consider:
 
 Consider:
 - MariaDB version-specific syntax and optimizer behavior.
-- EXPLAIN and ANALYZE output.
+- Use EXPLAIN first. Run ANALYZE only when executing the statement is safe and intended.
 - Storage engine and transaction semantics.
 - Prefix indexes, generated columns, and collations.
 - Gap locking and isolation behavior.

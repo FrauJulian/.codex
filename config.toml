@@ -1,37 +1,20 @@
 approvals_reviewer = "auto_review"
-model = "gpt-5.5"
-model_reasoning_effort = "medium"
-service_tier = "priority"
+model = "gpt-5.6-sol"
+model_reasoning_effort = "low"
+service_tier = "fast"
 
 [agents]
 max_threads = 6
-max_depth = 2
+max_depth = 1
 
 [marketplaces.ponytail]
-last_updated = "2026-06-22T06:04:09Z"
-last_revision = "6da37bfa7d0282522c7785759f4d2f1544015354"
+last_updated = "2026-07-10T08:43:54Z"
+last_revision = "14a0d79548d4de8fc2de95c1b94bb0de63a739d3"
 source_type = "git"
 source = "https://github.com/DietrichGebert/ponytail.git"
 
-[marketplaces.webwright]
-last_updated = "2026-06-22T06:25:50Z"
-last_revision = "4a46f282ec37f27d6003cc498a977939d62d9015"
-source_type = "git"
-source = "https://github.com/microsoft/Webwright.git"
-
 [plugins."ponytail@ponytail"]
 enabled = true
-
-[plugins."webwright@webwright"]
-enabled = true
-
-[hooks.state]
-
-[hooks.state."ponytail@ponytail:hooks/claude-codex-hooks.json:session_start:0:0"]
-trusted_hash = "sha256:469244cc9dcbe0d03cee72cd0ca9427e782e79401e341d3e2404f31271395641"
-
-[hooks.state."ponytail@ponytail:hooks/claude-codex-hooks.json:user_prompt_submit:0:0"]
-trusted_hash = "sha256:8eff5fa1384d969f4c961e3e4a4075fdc68e6d802b7072f37f3f84977aa3d164"
 
 [features]
 prevent_idle_sleep = true
@@ -40,8 +23,5 @@ prevent_idle_sleep = true
 sandbox = "elevated"
 
 [tui]
-status_line = ["model-with-reasoning", "current-dir"]
+status_line = ["model-with-reasoning", "current-dir", "context-remaining", "context-used", "context-window-size", "used-tokens"]
 status_line_use_colors = true
-
-[tui.model_availability_nux]
-"gpt-5.5" = 1

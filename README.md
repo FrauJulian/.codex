@@ -15,9 +15,7 @@ Project-specific settings do not belong in this repository. Do not commit `[proj
 Current synced marketplace/plugin config:
 
 - Marketplace `ponytail` from `https://github.com/DietrichGebert/ponytail.git`
-- Marketplace `webwright` from `https://github.com/microsoft/Webwright.git`
 - Enabled plugin `ponytail@ponytail`
-- Enabled plugin `webwright@webwright`
 
 ## What is not shared
 
@@ -29,6 +27,8 @@ Never commit:
 - `cap_sid`
 - `installation_id`
 - machine-specific trusted project entries in `config.toml`
+- TUI onboarding state such as `[tui.model_availability_nux]`
+- local hook trust state under `[hooks.state]`
 - `history.jsonl`
 - `sessions/`
 - `cache/`

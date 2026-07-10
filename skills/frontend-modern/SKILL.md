@@ -22,7 +22,6 @@ Use this skill for WPF/XAML and standards-based HTML/CSS implementation.
 - Keep business logic out of views and code-behind.
 - Use binding, commands, validation, styles, templates, resource dictionaries, and dependency properties appropriately.
 - Keep binding paths and data contexts understandable.
-- Use compiled binding features when available and compatible with the project.
 - Avoid expensive converters and deep visual trees in hot paths.
 - Enable virtualization for large item collections and do not accidentally disable it with layout choices.
 - Do not block the UI thread.
